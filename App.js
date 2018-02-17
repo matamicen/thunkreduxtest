@@ -22,9 +22,9 @@ export default class App extends React.Component {
   }
 
 
-    onPressClear = () => {
+    onPressClear = (var1) => {
     this.setState({ count: 0 });
-    console.log("clear");
+    console.log(var1);
   };
 
  
@@ -41,7 +41,7 @@ export default class App extends React.Component {
       <View style={container}>
           <TextInput          
             style={{width: 40, height: 40, borderWidth: 1}}
-            onChangeText={() => this.onChangeText(0)}
+            onChangeText={(text) => this.onChangeText(text)}
             value={this.state.count.toString()}
            />
         <View style={countViewStyle}> 
@@ -52,7 +52,7 @@ export default class App extends React.Component {
           <Button onPress={() => this.onPressDecrement()} title="-" />
         </View>
         
-        <Button onPress={() => this.onPressClear()} title="Clear" />
+        <Button onPress={() => this.onPressClear("jos")} title="Clear" />
       </View>
     );
   }
