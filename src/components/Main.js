@@ -2,8 +2,7 @@ import React from 'react';
 import { StyleSheet, Text, View, TextInput, Button } from 'react-native';
 
 import { connect } from 'react-redux';
-
-
+import { counterIncrement } from '../actions'
 
  class Main extends React.Component {
 
@@ -53,9 +52,9 @@ import { connect } from 'react-redux';
             value={this.state.count.toString()}
            />
         <View style={countViewStyle}> 
-          <Button onPress={() => this.onPressIncrement()} title="+" />
+          <Button onPress={this.props.counterIncrement} title="+" />
           <Text style={welcome}>
-            {this.state.count}
+            {this.props.count}
           </Text>
           <Button onPress={() => this.onPressDecrement()} title="-" />
         </View>
@@ -96,4 +95,4 @@ function mapStateToProps(state){
   }
 }
 
-export default connect(mapStateToProps,null)(Main);
+export default connect(mapStateToProps,{ counterIncrement})(Main);
