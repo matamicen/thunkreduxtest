@@ -2,7 +2,7 @@ import React from 'react';
 import { StyleSheet, Text, View, TextInput, Button } from 'react-native';
 
 import { connect } from 'react-redux';
-import { counterIncrement } from '../actions'
+import { counterIncrement, counterDecrement, counterClear, counterSet } from '../actions'
 
  class Main extends React.Component {
 
@@ -12,8 +12,6 @@ import { counterIncrement } from '../actions'
       count: 0
     };
 
-   
- 
   }
 
  
@@ -35,7 +33,8 @@ import { counterIncrement } from '../actions'
  
     onChangeText = (number) => {
     const count = parseInt(number);
-    this.setState({count});
+    this.props.counterSet(count);
+   // this.setState({count});
   }
 
 
@@ -49,17 +48,18 @@ import { counterIncrement } from '../actions'
           <TextInput          
             style={{width: 40, height: 40, borderWidth: 1}}
             onChangeText={(text) => this.onChangeText(text)}
-            value={this.state.count.toString()}
+            value={this.props.count.toString()}
+              //this.state.count.toString()}
            />
         <View style={countViewStyle}> 
           <Button onPress={this.props.counterIncrement} title="+" />
           <Text style={welcome}>
             {this.props.count}
           </Text>
-          <Button onPress={() => this.onPressDecrement()} title="-" />
+          <Button onPress={this.props.counterDecrement} title="-" />
         </View>
         
-        <Button onPress={() => this.onPressClear("jos")} title="Clear" />
+        <Button onPress={this.props.counterClear} title="Clear" />
       </View>
       
     );
@@ -95,4 +95,4 @@ function mapStateToProps(state){
   }
 }
 
-export default connect(mapStateToProps,{ counterIncrement})(Main);
+export default connect(mapStateToProps,{ counterIncrement, counterDecrement, counterClear, counterSet })(Main);
