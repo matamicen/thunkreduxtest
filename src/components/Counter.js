@@ -1,47 +1,29 @@
 import React from 'react';
 import { StyleSheet, Text, View, TextInput, Button } from 'react-native';
+
 import { connect } from 'react-redux';
 import { counterIncrement, counterDecrement, counterClear, counterSet } from '../actions'
-import Counter from './Counter';
 
- class Main extends React.Component {
+ class Counter extends React.Component {
 
-  constructor(props) {
-    super(props);
-    this.state = {
-      count: 0
-    };
+    constructor(props) {
+        super(props);
+        this.state = {
+          count: 0
+        };
+    }
 
-  }
-
- 
-    onPressIncrement = () => {
-    this.setState({ count: this.state.count + 1 });
-  }
-
-
-    onPressDecrement = () => {
-    this.setState({ count: this.state.count - 1 });
-  }
-
-
-    onPressClear = (var1) => {
-    this.setState({ count: 0 });
-    console.log(var1);
-  };
-
- 
+     
     onChangeText = (number) => {
-    const count = parseInt(number);
-    this.props.counterSet(count);
-   // this.setState({count});
-  }
+        const count = parseInt(number);
+        this.props.counterSet(count);
+       // this.setState({count});
+      }   
 
-
-
+      
   render() {
-   // console.log(this.props);
-    console.log("Render Padre");
+    //console.log(this.props);
+    console.log("Render Hijo");
     const { container, countViewStyle, welcome } = styles;
     return (
       
@@ -61,14 +43,8 @@ import Counter from './Counter';
         </View>
         
         <Button onPress={this.props.counterClear} title="Clear" />
-
-      
-    <Counter /> 
-        
-     
-
+        <Button onPress={this.props.counterClear} title="Otro" />
       </View>
-  
       
     );
   }
@@ -97,17 +73,12 @@ const styles = StyleSheet.create({
   }
 });
 
-/*function mapStateToProps(state){
-  return{
-    count: state
-    
-  }
-}
-*/
+
 function mapStateToProps(state){
   return{
     count: state
   }
 }
 
-export default connect(mapStateToProps,{ counterIncrement, counterDecrement, counterClear, counterSet })(Main);
+
+export default connect(mapStateToProps,{ counterIncrement, counterDecrement, counterClear, counterSet })(Counter);
