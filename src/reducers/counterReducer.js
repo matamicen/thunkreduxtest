@@ -1,60 +1,63 @@
-import {INCREMENT_COUNTER, DECREMENT_COUNTER, CLEAR_COUNTER,SET_COUNTER} from '../actions/types';
+import {INCREMENT_COUNTER, DECREMENT_COUNTER, CLEAR_COUNTER,SET_COUNTER,INCREMENT_COUNTER2, DECREMENT_COUNTER2, CLEAR_COUNTER2,SET_COUNTER2} from '../actions/types';
 
+const initialState = {
+    count1: 0,
+    count2: 0
+};
 
-export default (state = 0, action) => {
+export default (state = initialState, action) => {
+    let newStore;
     switch(action.type) {
         case INCREMENT_COUNTER:
-           return state + 1;
+            newStore = Object.assign({}, state, {
+                ...state,
+                count1: state.count1 + 1
+            });
+           return newStore;
+        case INCREMENT_COUNTER2:
+            newStore = Object.assign({}, state, {
+                ...state,
+                count2: state.count2 + 1
+            });
+           return newStore;
         case DECREMENT_COUNTER:
-           return state -1;
+            newStore = Object.assign({}, state, {
+                ...state,
+                count1: state.count1 - 1
+            });
+          return newStore;
+        case DECREMENT_COUNTER2:
+          newStore = Object.assign({}, state, {
+              ...state,
+              count2: state.count2 - 1
+          });
+        return newStore;  
         case CLEAR_COUNTER:
-           return 0;
+            newStore = Object.assign({}, state, {
+                ...state,
+                count1: 0
+            });
+          return newStore;
+        case CLEAR_COUNTER2:
+          newStore = Object.assign({}, state, {
+              ...state,
+              count2: 0
+          });
+        return newStore;
        case SET_COUNTER:
-           return action.payload;
+            newStore = Object.assign({}, state, {
+                ...state,
+                count1: action.payload
+            });
+         return newStore;
+         case SET_COUNTER2:
+         newStore = Object.assign({}, state, {
+             ...state,
+             count2: action.payload
+         });
+      return newStore;
         default:
            return state;
     }
    }
-/*
-const initialState = {
-    count1: 0
-   
-};
-export default function defaultState (state = initialState, action)  {
- let newStore;
 
- switch(action.type) {
-     case INCREMENT_COUNTER:
-     newStore = Object.assign({}, state, {
-        ...state,
-        count1:  1
-        });
-    return newStore;
-     //   return state.count1 + 1;
-     case DECREMENT_COUNTER:
-     newStore = Object.assign({}, state, {
-        ...state,
-        count1:  1
-        });
-        return newStore;
-    //    return state.count1 -1;
-     case CLEAR_COUNTER:
-     newStore = Object.assign({}, state, {
-        ...state,
-        count1: 0
-        });
-        return newStore;
-     //   return 0;
-    case SET_COUNTER:
-    newStore = Object.assign({}, state, {
-        ...state,
-        count1: action.payload
-        });
-        return newStore;
-    //    return action.payload;
-     default:
-        return state;
- }
-}
-
-*/

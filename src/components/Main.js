@@ -49,13 +49,15 @@ import Counter from './Counter';
           <TextInput          
             style={{width: 40, height: 40, borderWidth: 1}}
             onChangeText={(text) => this.onChangeText(text)}
-            value={this.props.count.toString()}
+            value={this.props.count1.toString()}
               //this.state.count.toString()}
            />
         <View style={countViewStyle}> 
           <Button onPress={this.props.counterIncrement} title="+" />
+         
           <Text style={welcome}>
-            {this.props.count}
+            {"Count1: "+this.props.count1}
+            
           </Text>
           <Button onPress={this.props.counterDecrement} title="-" />
         </View>
@@ -63,7 +65,7 @@ import Counter from './Counter';
         <Button onPress={this.props.counterClear} title="Clear" />
 
       
-    <Counter /> 
+    <Counter />
         
      
 
@@ -106,7 +108,7 @@ const styles = StyleSheet.create({
 */
 function mapStateToProps(state){
   return{
-    count: state
+    count1: state.count1
   }
 }
 

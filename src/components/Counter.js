@@ -2,7 +2,7 @@ import React from 'react';
 import { StyleSheet, Text, View, TextInput, Button } from 'react-native';
 
 import { connect } from 'react-redux';
-import { counterIncrement, counterDecrement, counterClear, counterSet } from '../actions'
+import { counterIncrement2, counterDecrement2, counterClear2, counterSet2 } from '../actions'
 
  class Counter extends React.Component {
 
@@ -16,7 +16,7 @@ import { counterIncrement, counterDecrement, counterClear, counterSet } from '..
      
     onChangeText = (number) => {
         const count = parseInt(number);
-        this.props.counterSet(count);
+        this.props.counterSet2(count);
        // this.setState({count});
       }   
 
@@ -35,15 +35,18 @@ import { counterIncrement, counterDecrement, counterClear, counterSet } from '..
               //this.state.count.toString()}
            />
         <View style={countViewStyle}> 
-          <Button onPress={this.props.counterIncrement} title="+" />
+        
+          <Button onPress={ this.props.counterIncrement2}  title="+2" />
+         
           <Text style={welcome}>
             {this.props.count}
           </Text>
-          <Button onPress={this.props.counterDecrement} title="-" />
+          <Button onPress={ this.props.counterDecrement2} title="-2" />
         </View>
         
-        <Button onPress={this.props.counterClear} title="Clear" />
-        <Button onPress={this.props.counterClear} title="Otro" />
+        
+        <Button onPress={this.props.counterClear2} title="Clear2" /> 
+       
       </View>
       
     );
@@ -76,9 +79,9 @@ const styles = StyleSheet.create({
 
 function mapStateToProps(state){
   return{
-    count: state
+    count: state.count2
   }
 }
 
 
-export default connect(mapStateToProps,{ counterIncrement, counterDecrement, counterClear, counterSet })(Counter);
+export default connect(mapStateToProps,{ counterIncrement2, counterDecrement2, counterClear2, counterSet2 })(Counter);
