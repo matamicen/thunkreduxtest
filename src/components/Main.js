@@ -112,4 +112,8 @@ function mapStateToProps(state){
   }
 }
 
-export default connect(mapStateToProps,{ counterIncrement, counterDecrement, counterClear, counterSet })(Main);
+const mapDispatchToProps = {
+  counterIncrement, counterDecrement, counterClear, counterSet
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Main);
