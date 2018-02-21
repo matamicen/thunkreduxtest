@@ -2,7 +2,7 @@ import React from 'react';
 import { StyleSheet, Text, View, TextInput, Button } from 'react-native';
 import { connect } from 'react-redux';
 import { counterIncrement, counterDecrement, counterClear, counterSet } from '../actions'
-import Counter from './Counter';
+
 
  class Main extends React.Component {
 
@@ -65,7 +65,7 @@ import Counter from './Counter';
         <Button onPress={this.props.counterClear} title="Clear" />
 
       
-    <Counter />
+   
         
      
 

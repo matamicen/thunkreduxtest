@@ -1,4 +1,4 @@
-import {INCREMENT_COUNTER, DECREMENT_COUNTER, CLEAR_COUNTER, SET_COUNTER, INCREMENT_COUNTER2, DECREMENT_COUNTER2, CLEAR_COUNTER2, SET_COUNTER2} from './types';
+import {INCREMENT_COUNTER, DECREMENT_COUNTER, CLEAR_COUNTER, SET_COUNTER} from './types';
 
 export const counterIncrement = () => {
     return {
@@ -6,11 +6,6 @@ export const counterIncrement = () => {
     };
 }
 
-export const counterIncrement2 = () => {
-    return {
-        type: INCREMENT_COUNTER2
-    };
-}
 
 export const counterDecrement = () => {
     return {
@@ -18,11 +13,7 @@ export const counterDecrement = () => {
     };
 }
 
-export const counterDecrement2 = () => {
-    return {
-        type: DECREMENT_COUNTER2
-    };
-}
+
 
 export const counterClear = () => {
     return {
@@ -30,22 +21,9 @@ export const counterClear = () => {
     };
 }
 
-export const counterClear2 = () => {
-    return {
-        type: CLEAR_COUNTER2
-    };
-}
-
 export const counterSet = (receivednumber) => {
     return {
         type: SET_COUNTER,
-        payload: receivednumber
-    };
-}
-
-export const counterSet2 = (receivednumber) => {
-    return {
-        type: SET_COUNTER2,
         payload: receivednumber
     };
 }
