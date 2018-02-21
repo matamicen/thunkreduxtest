@@ -23,7 +23,7 @@ import { counterIncrement2, counterDecrement2, counterClear2, counterSet2 } from
       
   render() {
     //console.log(this.props);
-    console.log("Render Hijo");
+    console.log("Render Hijo.");
     const { container, countViewStyle, welcome } = styles;
     return (
       

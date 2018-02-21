@@ -41,7 +41,7 @@ import Counter from './Counter';
 
   render() {
    // console.log(this.props);
-    console.log("Render Padre");
+    console.log("Render Padre.");
     const { container, countViewStyle, welcome } = styles;
     return (
       
