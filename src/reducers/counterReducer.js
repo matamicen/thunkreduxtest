@@ -15,23 +15,14 @@ export default (state = initialState, action) => {
                 count1: state.count1 + 1
             });
            return newStore;
-        case INCREMENT_COUNTER2:
-            newStore = Object.assign({}, state, {
-                ...state,
-                count2: state.count2 + 1
-            });
-           return newStore;
+    
         case DECREMENT_COUNTER:
             newStore = Object.assign({}, state, {
                 ...state,
                 count1: state.count1 - 1
             });
           return newStore;
-        case DECREMENT_COUNTER2:
-          newStore = Object.assign({}, state, {
-              ...state,
-              count2: state.count2 - 1
-          });
+   
         return newStore;  
         case CLEAR_COUNTER:
             newStore = Object.assign({}, state, {
@@ -39,24 +30,14 @@ export default (state = initialState, action) => {
                 count1: 0
             });
           return newStore;
-        case CLEAR_COUNTER2:
-          newStore = Object.assign({}, state, {
-              ...state,
-              count2: 0
-          });
-        return newStore;
+ 
        case SET_COUNTER:
             newStore = Object.assign({}, state, {
                 ...state,
                 count1: action.payload
             });
          return newStore;
-         case SET_COUNTER2:
-         newStore = Object.assign({}, state, {
-             ...state,
-             count2: action.payload
-         });
-      return newStore;
+        
         default:
            return state;
     }
