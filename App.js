@@ -1,12 +1,16 @@
 import React from 'react';
 import { StyleSheet, Text, View, TextInput, Button } from 'react-native';
 import { Provider } from 'react-redux';
-import { createStore } from 'redux';
-import reducer from './src/reducers/counterReducer';
+import { createStore, applyMiddleware } from 'redux';
+import peopleReducer from './src/reducers/peopleReducer';
 //import Main from './src/components/Main';
+import thunk from "redux-thunk"
 import AppContainer from "./src/containers/AppContainer";
 
-const store = createStore(reducer);
+const createStoreWithMidddleware = applyMiddleware(thunk)(createStore);
+
+
+const store = createStoreWithMidddleware(peopleReducer);
 
 export default class App extends React.Component {
 

@@ -41,9 +41,11 @@ export default class PeopleList extends Component {
   }
 }
 
+
 PeopleList.propTypes = {
   people: PropTypes.array
 };
+
 
 const styles = StyleSheet.create({
   container: {

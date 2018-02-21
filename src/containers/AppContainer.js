@@ -1,11 +1,9 @@
 import React, { Component } from "react";
-import { StyleSheet, View, ActivityIndicator } from "react-native";
+import { StyleSheet, View, ActivityIndicator, Text } from "react-native";
 import PeopleList from "../components/PeopleList";
 import { connect } from 'react-redux';
-import { counterIncrement, counterDecrement, counterClear, counterSet } from '../actions'
+import { fetchPeople } from '../actions';
 
-
-//export default class AppContainer extends Component 
  class AppContainer extends Component {
   constructor(props) {
     super(props);
@@ -27,17 +25,34 @@ import { counterIncrement, counterDecrement, counterClear, counterSet } from '..
   }
 
   componentDidMount() {
-    this.fetchRandomPeopleAPI();
+   // this.fetchRandomPeopleAPI();
+   console.log("Did Mount: "+ this.props.randompeople.isFetching)
+   this.props.fetchPeople();
   }
 
   render() {
-    let content = <PeopleList people={this.state.people} />;
-    if (this.state.isFetching) {
+    console.log("Render "+ this.props.randompeople.isFetching + "error:" + this.props.randompeople.errorMessage);
+  
+    let content = <PeopleList people={this.props.randompeople.people} />;
+    if (this.props.randompeople.isFetching) {
       content = <ActivityIndicator size="large" />;
     }
-    return <View style={styles.container}>{content}</View>;
+    if (this.props.randompeople.errorMessage === ""){ 
+      console.log("no hay error");
+      return  <View style={styles.container}>{content}</View>; }
+     else  
+     { console.log("SI hay error");
+        return <View style={styles.container}> 
+          <Text style={styles.container}>
+          {this.props.randompeople.errorMessage.toString()}
+          </Text>
+        </View>;
+      }
+    
   }
 }
+
+
 
 const styles = StyleSheet.create({
   container: {
@@ -51,12 +66,12 @@ const styles = StyleSheet.create({
 
 function mapStateToProps(state){
     return{
-      count1: state.count1
+      randompeople: state
     }
   }
   
   const mapDispatchToProps = {
-    counterIncrement, counterDecrement, counterClear, counterSet
+   fetchPeople
   }
   
   export default connect(mapStateToProps, mapDispatchToProps)(AppContainer);
